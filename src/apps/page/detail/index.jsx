@@ -66,37 +66,37 @@ class Detail extends Component {
                 title: '结束时间',
                 dataIndex: 'finishTime',
                 key: 'finishTime',
-                width: 100,
+                width: 150,
             },
             {
                 title: '始发地',
                 dataIndex: 'startName',
                 key: 'startName',
-                width: 100,
+                width: 150,
             },
             {
                 title: '目的地',
                 dataIndex: 'endName',
                 key: 'endName',
-                width: 100,
+                width: 150,
             },
             {
                 title: '支付金额',
                 dataIndex: 'totalPrice',
                 key: 'totalPrice',
-                width: 100,
+                width: 150,
             },
             {
                 title: '订单状态',
                 dataIndex: 'didStatusDesc',
                 key: 'didStatusDesc',
-                width: 100,
+                width: 150,
             },
               {
                 title: '支付状态',
                 dataIndex: 'payStatusDesc',
                 key: 'payStatusDesc',
-                width: 100,
+                width: 150,
               }
         ];
         return array

@@ -20,12 +20,10 @@ function* fetchDetail(action) {
     });
 
     const data=yield service.get(API[ENTITY_DETAIL], {
-      // startDate: payload.startDate.replace(/-/g, ''),
-      // endDate: payload.endDate.replace(/-/g, ''),
+      startDate: payload.startDate.replace(/-/g, ''),
+      endDate: payload.endDate.replace(/-/g, ''),
       page: payload.page
     });
-
-    console.log(data)
 
     yield put({
       type: actionTypes.UPDATE_DETAIL,
