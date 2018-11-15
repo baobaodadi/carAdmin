@@ -30,7 +30,7 @@ const defaultState = {
 };
 const dateFormat = 'YYYY-MM-DD';
 
-class Detail extends Component {
+class Pay extends Component {
 
     columns() {
         let array = [
@@ -111,9 +111,9 @@ class Detail extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.detail !== this.props.detail)
+        if (nextProps.pay !== this.props.pay)
             this.setState({
-                detail: nextProps.detail
+                pay: nextProps.pay
             });
     }
 
@@ -123,14 +123,14 @@ class Detail extends Component {
             endDate: dateString[1],
         });
         if (dateString[0] !== '' && dateString[1] !== '') {
-            this.props.fetchDetail({
+            this.props.fetchPay({
                 startDate: dateString[0],
                 endDate: dateString[1],
                 page: 0,
             });
         } else {
             this.setState({
-                detail: [],
+                pay: [],
             });
         }
 
@@ -143,7 +143,7 @@ class Detail extends Component {
         this.setState({
             pagination: pager,
         });
-        this.props.fetchDetail({
+        this.props.fetchPay({
             startDate: this.state.startDate,
             endDate: this.state.endDate,
             page: pager.current,
@@ -156,9 +156,9 @@ class Detail extends Component {
     }
 
     render() {
-        const {detail, loading} = this.state;
+        const {pay, loading} = this.state;
         return (
-            <div className="detail">
+            <div className="pay">
                 <div className="find">
                     <div className="bank">
                         <RangePicker
@@ -170,15 +170,15 @@ class Detail extends Component {
                 </div>
 
                 {
-                  detail ?
+                  pay ?
                         <Table
-                            dataSource={detail.content}
+                            dataSource={pay.content}
                             loading={loading}
                             columns={this.columns()}
                             pagination={{
-                                pageSize: detail.size,
-                                current: detail.number,
-                                total: detail.totalElements
+                                pageSize: pay.size,
+                                current: pay.number,
+                                total: pay.totalElements
                             }}
                             scroll={{y: 640}}
                             onChange={this.handleTableChange}
@@ -199,20 +199,20 @@ class Detail extends Component {
 
 const mapStateToProps = state => {
     return ({
-      detail: state.detail.data,
+      pay: state.pay.data,
     })
 };
 
 
 const mapDispatchToProps = dispatch => ({
-    fetchDetail: (payload) => dispatch({
-        type: actionTypes.FETCH_DETAIL,
+    fetchPay: (payload) => dispatch({
+        type: actionTypes.FETCH_PAY,
         payload
     }),
 
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Detail));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Pay));
 
 
 

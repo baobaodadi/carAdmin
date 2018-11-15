@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import Detail from './detail/index.jsx';
+import Pay from './pay/index.jsx';
 
 import {
   Route,
@@ -17,6 +18,7 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/detail" component={Detail}/>
+        <Route exact path="/pay" component={Pay}/>
         <Redirect from="/" to="/detail"/>
       </Switch>
     );
