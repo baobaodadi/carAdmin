@@ -35,47 +35,69 @@ class Detail extends Component {
     columns() {
         let array = [
             {
-                title: '交易时间',
-                dataIndex: 'outTransTime',
-                key: 'outTransTime',
+                title: '订单号',
+                dataIndex: 'orderId',
+                key: 'orderId',
+                width: 150,
+            },{
+                title: '乘车人',
+                dataIndex: 'userName',
+                key: 'userName',
+                width: 150,
+            },{
+                title: '手机号',
+                dataIndex: 'phone',
+                key: 'phone',
                 width: 150,
             },
             {
-                title: '商户订单号',
-                dataIndex: 'instructId',
-                key: 'instructId',
+                title: '车型',
+                dataIndex: 'carLevel',
+                key: 'carLevel',
                 width: 150,
             },
             {
-                title: '第三方订单号',
-                dataIndex: 'outOrderId',
-                key: 'outOrderId',
+                title: '下单时间',
+                dataIndex: 'orderTime',
+                key: 'orderTime',
                 width: 250,
             },
             {
-                title: '总金额',
-                dataIndex: 'bizAmt',
-                key: 'bizAmt',
+                title: '结束时间',
+                dataIndex: 'finishTime',
+                key: 'finishTime',
                 width: 100,
             },
             {
-                title: '手续费',
-                dataIndex: 'commissionFeeAmt',
-                key: 'commissionFeeAmt',
+                title: '始发地',
+                dataIndex: 'startName',
+                key: 'startName',
                 width: 100,
             },
             {
-                title: '摘要',
-                dataIndex: 'productInfo',
-                key: 'productInfo',
+                title: '目的地',
+                dataIndex: 'endName',
+                key: 'endName',
                 width: 100,
             },
             {
-                title: '交易类型',
-                dataIndex: 'checkType',
-                key: 'checkType',
+                title: '支付金额',
+                dataIndex: 'totalPrice',
+                key: 'totalPrice',
                 width: 100,
-            }
+            },
+            {
+                title: '订单状态',
+                dataIndex: 'didStatusDesc',
+                key: 'didStatusDesc',
+                width: 100,
+            },
+              {
+                title: '支付状态',
+                dataIndex: 'payStatusDesc',
+                key: 'payStatusDesc',
+                width: 100,
+              }
         ];
         return array
     }
@@ -89,9 +111,9 @@ class Detail extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.dataSource !== this.props.dataSource)
+        if (nextProps.detail !== this.props.detail)
             this.setState({
-                dataSource: nextProps.dataSource
+                detail: nextProps.detail
             });
     }
 
@@ -104,11 +126,11 @@ class Detail extends Component {
             this.props.fetchDetail({
                 startDate: dateString[0],
                 endDate: dateString[1],
-                page: 1,
+                page: 0,
             });
         } else {
             this.setState({
-                dataSource: [],
+                detail: [],
             });
         }
 
@@ -135,6 +157,7 @@ class Detail extends Component {
 
     render() {
         const {detail, loading} = this.state;
+        console.log(detail)
         return (
             <div className="detail">
                 <div className="find">
@@ -150,13 +173,13 @@ class Detail extends Component {
                 {
                   detail ?
                         <Table
-                            dataSource={detail.list}
+                            dataSource={detail.content}
                             loading={loading}
                             columns={this.columns()}
                             pagination={{
-                                pageSize: detail.pageSize,
-                                current: detail.page,
-                                total: detail.total
+                                pageSize: detail.size,
+                                current: detail.number,
+                                total: detail.totalElements
                             }}
                             scroll={{y: 640}}
                             onChange={this.handleTableChange}

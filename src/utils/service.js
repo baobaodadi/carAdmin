@@ -12,19 +12,18 @@ function handleResponse(promise, url, method) {
         return res.json();
       }
     })
-    .then(({ code, data, message, models }) => {
-      if (+code === 0) {
+    .then(({ status, data, msg}) => {
+      if (status === 0) {
         if (data != null) {
           return data;
         }
-
-        return models;
+        // return models;
       }
 
-      else if (code) {
-        console.log('network error', { code, message, url, method });
+      else if (status) {
+        console.log('network error', { status, msg, url, method });
 
-        throw Object({ code, message, url, method });
+        throw Object({ status, msg, url, method });
       }
     });
 }

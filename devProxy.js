@@ -1,30 +1,11 @@
 module.exports = {
     test: {
-      '^/asset/**': {
-        target: 'http://10.129.204.69:8090/',
-        hostRewrite: 'http://10.129.204.69:8090/',
-        changeOrigin: true,
-        secure: false,
-      },
-      '^/category/**': {
-        target: 'http://10.129.204.69:8090/',
-        hostRewrite: 'http://10.129.204.69:8090/',
-        changeOrigin: true,
-        secure: false,
-      },
-      '^/pub/**': {
-        target: 'http://10.129.204.69:8090/',
-        hostRewrite: 'http://10.129.204.69:8090/',
-        changeOrigin: true,
-        secure: false,
-      },
-      '^/suite/**': {
-        target: 'http://10.129.204.69:8090/',
-        hostRewrite: 'http://10.129.204.69:8090/',
+      '^/taxi/**': {
+        target: 'http://10.129.205.109:8080/',
+        hostRewrite: 'http://10.129.205.109:8080/',
         changeOrigin: true,
         secure: false,
       }
-
     },
 //   // prod: {
 //   //   '/api/v1/exceptionData/**': {
